@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// typescript model
+import { Notice } from './models/notice.model'
+//
+import { useEffect, useState } from 'react'
+import styles from './styles/styles.module.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// components
+import Header from './components/Header'
+import Notices from './components/Notices'
+
+// Packages
+import axios from 'axios'
+
+const App = () => {
+	const [notices, setNotices] = useState<Notice[] | null>(null)
+
+	useEffect(() => {
+		getNotices()
+	}, [])
+
+	const getNotices = async () => {
+		try {
+			const res: any = await axios.get(
+				'https://ctevtnotice.herokuapp.com/notices'
+			)
+
+			const fetchedNotices: Notice[] = await res.data
+
+			setNotices(fetchedNotices)
+		} catch (e: any) {
+			console.error(e.messsage)
+		}
+	}
+
+	return (
+		<div className={styles.content}>
+			<Header reloadFunc={getNotices} />
+			<Notices notices={notices} />
+		</div>
+	)
 }
 
-export default App;
+export default App

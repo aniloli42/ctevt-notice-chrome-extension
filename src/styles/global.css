@@ -1,0 +1,16 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+		sans-serif;
+	user-select: none;
+}
+
+:root {
+	--primary: #5772d0;
+	--dull-blue: #7a94f0;
+	--offwhite: #fcf3f3;
+	--dullwhite: #ccc;
+	--crimson: #f04f4f;
+}
