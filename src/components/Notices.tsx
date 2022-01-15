@@ -1,3 +1,5 @@
+import React from 'react'
+
 import moment from 'moment'
 import { Notice } from '../models/notice.model'
 import styles from './../styles/styles.module.css'
@@ -26,7 +28,7 @@ const Notices = (props: Props) => {
 								href={notice.notice_link}
 								target='_blank'
 								className={styles.link_button}
-								rel='noreferrer'>
+								rel='noopener noreferrer'>
 								View Notice
 							</a>
 						</div>

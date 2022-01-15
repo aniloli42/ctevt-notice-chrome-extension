@@ -1,3 +1,5 @@
+import React from 'react'
+
 // file
 import reloadImg from './../assets/imgs/reload.png'
 
